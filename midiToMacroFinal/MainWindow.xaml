@@ -1,0 +1,121 @@
+﻿<Window x:Name="mainWindow" x:Class="midiToMacroFinal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Launchpad Controller" Height="592.5" Width="1035">
+    <Grid Name="mainGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Menu DockPanel.Dock="Top" Grid.ColumnSpan="3" >
+            <MenuItem Header="_Application">
+                <MenuItem Header="_Restart" />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+            <MenuItem Header="_Profile">
+                <MenuItem x:Name="menuResetProfile" Header="_Reset Profile" Click="menuResetProfile_Click" />
+                <MenuItem x:Name="menuOpenProfile" Header="_Open Profile" Click="menuOpenProfile_Click" />
+                <MenuItem x:Name="menuSaveProfile" Header="_Save Profile" Click="menuSaveProfile_Click" />
+            </MenuItem>
+            <MenuItem Header="Key">
+                <MenuItem x:Name="menuResetKey" Header="_New Profile"/>
+                <MenuItem x:Name="menuOpenKey" Header="_Open Profile"/>
+                <MenuItem x:Name="menuSaveKey" Header="_Save Profile"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem x:Name="menuInfoHelp" Header="_Info" Click="menuInfoHelp_Click" />
+                <MenuItem x:Name="menuDocsHelp" Header="_Go To Documentation" Click="menuDocsHelp_Click" />
+            </MenuItem>
+        </Menu>
+
+        <GridSplitter Name="gridSplitter" Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FF8F8F8F" />
+        <Grid Name="configPanelGrid" Grid.Row="1" Grid.Column="1" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+
+
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border Name="buttonBoarder" BorderBrush="Black" BorderThickness="2"  Canvas.Left="9" Canvas.Top="55"  Padding="4" Grid.Row="1" Margin="6"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <Button Name="buttonAddMode" Grid.Column="0" Content="Add Mode" Margin="6,2,6,2" Click="buttonAddMode_Click"/>
+                <Button Name="buttonEditMode" Grid.Column="1" Content="Edit Mode Settings" Margin="6,2,6,2" Click="buttonEditMode_Click"/>
+                <Button Grid.Column="2" Content="Delete Mode" Margin="6,2,6,2" IsEnabled="False"/>
+                <ComboBox x:Name="modeComboBox" SelectedIndex="0"  VerticalAlignment="Stretch" Margin="6,2,6,2" Grid.Column="3">
+                    <ComboBoxItem x:Name="comboItem_Mode1" Content="Mode 1"/>
+                </ComboBox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="3" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="buttonNameTextBox" Grid.ColumnSpan="2" Margin="20" TextChanged="buttonNameTextBox_TextChanged"/>
+            <ListBox Name="functionsList" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10" PreviewKeyDown="functionsList_PreviewKeyDown">
+                
+            </ListBox>
+            <Button Grid.Row="1" Grid.Column="1" Margin="12" Content="Add Function" Click="addFunctionButton_Click"/>
+            <Button Grid.Row="2" Grid.Column="1" Margin="12" Content="Edit Function Settings" Click="editFunctionSettingsButton_Click"/>
+            <Button Grid.Row="3" Grid.Column="1" Margin="12" Content="Edit Lighting Settings" Click="editFunctionLightsButton_Click"/>
+            <Button Grid.Row="4" Grid.Column="1" Margin="12" Content="Remove Function" Click="removeFunctionButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>
